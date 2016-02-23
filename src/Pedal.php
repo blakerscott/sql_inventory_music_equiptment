@@ -100,18 +100,24 @@
 
 		}
 
+		function explodeObj()
+		{
+			return get_object_vars($this);
+		}
+
 		static function deleteAll()
 		{
 			$GLOBALS['db']->exec("DELETE FROM pedals;");
 		}
 
-		function find($keyword)
+		static function find($keyword)
 		{
 			$pedals = Pedal::getAll();
 			$result = array();
-			foreach($pedals as $key => $pedal)
+			foreach($pedals as $pedal)
 			{
-				if(strpos($pedal[$key], $keyword))
+				$splitObj = $pedal->explodeObj();
+				if(in_array($keyword, $splitObj))
 				{
 					array_push($result, $pedal);
 				}
