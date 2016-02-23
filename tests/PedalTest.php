@@ -72,7 +72,7 @@
 
 			//Act
 			$test_pedal->save();
-			$result = Pedal::find("Big");
+			$result = Pedal::find("Big Muff");
 
 			//Assert
 			$this->assertEquals($test_pedal, $result[0]);
